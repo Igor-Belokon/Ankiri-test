@@ -1,53 +1,40 @@
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Routes as Switch,
-  Route,
-  Link,
-} from "react-router-dom";
+import React from "react";
+// import {
+//   BrowserRouter as Router,
+//   Routes as Switch,
+//   Route,
+// } from "react-router-dom";
 
-export default function App() {
+// import Header from "./components/header/header";
+// import Category from "./components/category/category";
+import Main from "./components/main-page/main";
+
+import { Provider } from "react-redux";
+
+import store from "./store";
+
+const App = () => {
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <div>
+      <Provider store={store}>
+        {/* <Router> */}
+        {/* <Header /> */}
+        {/* <Switch>
+            <Route path="/shop"> */}
+        <Main />
+        {/* </Route>
+            <Route path="/main">
+              <Main />
+            </Route>
+            <Route path="/category">
+              <Category />
+            </Route>
+          </Switch>
+        </Router> */}
+      </Provider>
+    </div>
   );
-}
+};
 
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
+export default App;
